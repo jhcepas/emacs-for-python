@@ -19,5 +19,5 @@
 	    (define-key python-mode-map "\C-c\C-d" 'rope-show-calltip))
 	  )
 ;; Quickly comment regions
-(define-key python-mode-map "\C-c\C-c" 'comment-region)
+;;(define-key python-mode-map "\C-c\C-c" 'comment-region)
 (provide 'epy-bindings)

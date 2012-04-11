@@ -71,7 +71,7 @@
 (defun switch-full-screen ()
       (interactive)
       (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-(global-set-key [f11] 'switch-full-screen)
+;(global-set-key [f11] 'switch-full-screen)
 
 ; My references database
 (setq reftex-default-bibliography   (quote       ("~/refs.bib")))       

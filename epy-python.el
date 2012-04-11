@@ -1,12 +1,16 @@
 ;; epy-python.el - setup of python stuff
 
 ;; fgallina/python.el
-(require 'python (concat epy-install-dir "extensions/python.el"))
+;(require 'python (concat epy-install-dir "extensions/python.el"))
 
 ;; pymacs
-(require 'pymacs (concat epy-install-dir "extensions/pymacs.el"))
+;(require 'pymacs (concat epy-install-dir "extensions/pymacs.el"))
 ;(require 'pymacs "/usr/share/emacs/site-lisp/pymacs.el")
-(require 'pymacs)
+;(require 'pymacs)
+
+;(autoload 'python-pylint "python-pylint")
+;(autoload 'pylint "python-pylint")
+;(require  'python-pylint)
 
 (defun setup-ropemacs ()
   "Setup the ropemacs harness"
@@ -90,6 +94,19 @@ The CMDLINE should be something like:
   (add-to-list 'flymake-allowed-file-name-masks
                (list "\\.py\\'" (apply-partially 'flymake-command-parse cmdline)))
   )
+
+
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+               'flymake-create-temp-inplace))
+       (local-file (file-relative-name
+            temp-file
+            (file-name-directory buffer-file-name))))
+      (list "~/.emacs.d/epylint"  (list local-file))))
+   (add-to-list 'flymake-allowed-file-name-masks
+             '("\\.py\\'" flymake-pyflakes-init)))
+
 
 
 ;; Python or python mode?
