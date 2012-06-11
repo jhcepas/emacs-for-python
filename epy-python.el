@@ -60,52 +60,52 @@
 ;; Flymake additions, I have to put this one somwhere else?
 ;;=========================================================
 
-(defun flymake-create-copy-file ()
-  "Create a copy local file"
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy 
-                     'flymake-create-temp-inplace)))
-    (file-relative-name 
-     temp-file 
-     (file-name-directory buffer-file-name))))     
+;; (defun flymake-create-copy-file ()
+;;   "Create a copy local file"
+;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy 
+;;                      'flymake-create-temp-inplace)))
+;;     (file-relative-name 
+;;      temp-file 
+;;      (file-name-directory buffer-file-name))))     
 
-(defun flymake-command-parse (cmdline)
-  "Parses the command line CMDLINE in a format compatible
-       with flymake, as:(list cmd-name arg-list)
+;; (defun flymake-command-parse (cmdline)
+;;   "Parses the command line CMDLINE in a format compatible
+;;        with flymake, as:(list cmd-name arg-list)
 
-The CMDLINE should be something like:
+;; The CMDLINE should be something like:
 
- flymake %f python custom.py %f
+;;  flymake %f python custom.py %f
 
-%f will be substituted with a temporary copy of the file that is
- currently being checked.
-"
-  (let ((cmdline-subst (replace-regexp-in-string "%f" (flymake-create-copy-file) cmdline)))
-    (setq cmdline-subst (split-string-and-unquote cmdline-subst))
-    (list (first cmdline-subst) (rest cmdline-subst))
-    ))
-
-
-(when (load-file (concat epy-install-dir "extensions/flymake-patch.el"))
-  (setq flymake-info-line-regex
-        (append flymake-info-line-regex '("unused$" "^redefinition" "used$")))
-  (load-library "flymake-cursor"))
-
-(defun epy-setup-checker (cmdline)
-  (add-to-list 'flymake-allowed-file-name-masks
-               (list "\\.py\\'" (apply-partially 'flymake-command-parse cmdline)))
-  )
+;; %f will be substituted with a temporary copy of the file that is
+;;  currently being checked.
+;; "
+;;   (let ((cmdline-subst (replace-regexp-in-string "%f" (flymake-create-copy-file) cmdline)))
+;;     (setq cmdline-subst (split-string-and-unquote cmdline-subst))
+;;     (list (first cmdline-subst) (rest cmdline-subst))
+;;     ))
 
 
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-               'flymake-create-temp-inplace))
-       (local-file (file-relative-name
-            temp-file
-            (file-name-directory buffer-file-name))))
-      (list "~/.emacs.d/epylint"  (list local-file))))
-   (add-to-list 'flymake-allowed-file-name-masks
-             '("\\.py\\'" flymake-pyflakes-init)))
+;; (when (load-file (concat epy-install-dir "extensions/flymake-patch.el"))
+;;   (setq flymake-info-line-regex
+;;         (append flymake-info-line-regex '("unused$" "^redefinition" "used$")))
+;;   (load-library "flymake-cursor"))
+
+;; (defun epy-setup-checker (cmdline)
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                (list "\\.py\\'" (apply-partially 'flymake-command-parse cmdline)))
+;;   )
+
+
+;; (when (load "flymake" t)
+;;   (defun flymake-pyflakes-init ()
+;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                'flymake-create-temp-inplace))
+;;        (local-file (file-relative-name
+;;             temp-file
+;;             (file-name-directory buffer-file-name))))
+;;       (list "~/.emacs.d/epylint"  (list local-file))))
+;;   (add-to-list 'flymake-allowed-file-name-masks
+;;                '("\\.py\\'" flymake-pyflakes-init)))
 
 
 
@@ -120,13 +120,13 @@ The CMDLINE should be something like:
      ;;==================================================
      ;; Virtualenv Commands
      ;;==================================================
-     (autoload 'virtualenv-activate "virtualenv"
-       "Activate a Virtual Environment specified by PATH" t)
-     (autoload 'virtualenv-workon "virtualenv"
-       "Activate a Virtual Environment present using virtualenvwrapper" t)
+     ;; (autoload 'virtualenv-activate "virtualenv"
+     ;;   "Activate a Virtual Environment specified by PATH" t)
+     ;; (autoload 'virtualenv-workon "virtualenv"
+     ;;   "Activate a Virtual Environment present using virtualenvwrapper" t)
      
      ;; Not on all modes, please
-     (add-hook 'python-mode-hook 'flymake-find-file-hook)
+     ;(add-hook 'python-mode-hook 'flymake-find-file-hook)
      
      )
   )

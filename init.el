@@ -150,13 +150,15 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(default ((t (:stipple nil :background "grey10" :foreground "grey85" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(flymake-errline ((((class color)) (:underline "dark red" :slant italic))))
+ '(flymake-warnline ((((class color)) (:underline "grey52"))))
  '(flyspell-duplicate ((t (:underline t :slant italic))))
  '(flyspell-incorrect ((t (:underline t :weight bold))))
  '(font-lock-comment-face ((t (:foreground "indianred"))))
  '(font-lock-keyword-face ((t (:foreground "turquoise3"))))
  '(font-lock-string-face ((t (:foreground "palegreen4"))))
  '(outline-2 ((t (:foreground "steelblue1"))))
- '(rst-level-1-face ((t (:background "grey20"))) t)
- '(rst-level-2-face ((t (:background "grey78"))) t)
- '(rst-level-3-face ((t (:background "darkgreen"))) t)
+ '(rst-level-1-face ((t (:background "darkred"))) t)
+ '(rst-level-2-face ((t (:foreground "indianred"))) t)
+ '(rst-level-3-face ((t (:background "grey30" :foreground "lightblue"))) t)
  '(rst-level-4-face ((t (:background "grey20"))) t))

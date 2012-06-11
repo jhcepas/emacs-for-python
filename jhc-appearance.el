@@ -49,6 +49,10 @@
  '(default ((t (:stipple nil :background "grey10" :foreground "grey85" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(flyspell-duplicate ((t (:underline t :slant italic))))
  '(flyspell-incorrect ((t (:underline t :weight bold))))
+
+ '(flymake-errline ((((class color)) (:underline "dark red" :slant italic))))
+ '(flymake-warnline ((((class color)) (:underline "grey52"))))
+
  '(font-lock-comment-face ((t (:foreground "indianred"))))
  '(font-lock-keyword-face ((t (:foreground "turquoise3"))))
  '(font-lock-string-face ((t (:foreground "palegreen4"))))
