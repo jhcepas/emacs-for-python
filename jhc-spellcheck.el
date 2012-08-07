@@ -1,4 +1,4 @@
-(require 'ispell)
+(idle-require 'ispell)
 ;; (setq-default ispell-program-name
 ;;               (if (file-executable-p "/usr/bin/hunspell")
 ;;                   "/usr/bin/hunspell"

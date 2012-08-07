@@ -1,5 +1,45 @@
-;; Add my personal directory to the path 
-(setq load-path (cons "~/.emacs.d/" load-path))
+;; BASIC EMACS ASPECT
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(global-font-lock-mode t nil (font-lock))
+ '(indicate-empty-lines t)
+ '(inhibit-startup-screen t)
+ '(inverse-video nil)
+ '(line-number-display-limit nil)
+ '(menu-bar-mode nil)
+ '(show-paren-mode t nil (paren))
+ '(tool-bar-mode nil)
+ '(truncate-lines t)
+ '(truncate-partial-width-windows t)
+ '(use-file-dialog nil)
+ '(visible-bell t)
+ '(x-select-enable-clipboard t)
+ '(x-stretch-cursor nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:stipple nil :background "grey10" :foreground "grey85" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(flymake-errline ((((class color)) (:underline "dark red" :slant italic))))
+ '(flymake-warnline ((((class color)) (:underline "grey52"))))
+ '(flyspell-duplicate ((t (:underline t :slant italic))))
+ '(flyspell-incorrect ((t (:underline t :weight bold))))
+ '(font-lock-comment-face ((t (:foreground "indianred"))))
+ '(font-lock-keyword-face ((t (:foreground "turquoise3"))))
+ '(font-lock-string-face ((t (:foreground "palegreen4"))))
+ '(outline-2 ((t (:foreground "steelblue1"))))
+ '(rst-level-1-face ((t (:background "darkred"))) t)
+ '(rst-level-2-face ((t (:background "grey78"))) t)
+ '(rst-level-3-face ((t (:foreground "lightblue"))) t)
+ '(rst-level-4-face ((t (:background "grey20"))) t))
+
+;; CONFIG
 
 ;; Trick to get the filename of the installation directory
 (defconst epy-install-dir
@@ -10,12 +50,24 @@
 )
 (add-to-list 'load-path epy-install-dir)
 
-(require 'epy-setup)
+;; Adding paths to the variable load-path
+(dolist (relpath '(""
+                   "extensions/"
+                   "extensions/yasnippet"
+                   "extensions/auto-complete"
+                   "extensions/eproject"
+                   )
+                 )
+  (add-to-list 'load-path (concat epy-install-dir relpath)))
+
+(require 'idle-require)
+(idle-require-mode 1)
+
 (require 'epy-python)
 (require 'epy-completion)
 (require 'epy-editing)
 (require 'epy-bindings)
-
+ 
 (require 'jhc-backups)
 (require 'jhc-navigation)
 (require 'jhc-buffers)
@@ -26,7 +78,7 @@
 (require 'template)
 (template-initialize)
 
-;(require 'pdb)
+(idle-require 'pdb)
 
 (setq auto-mode-alist
       (append '(
@@ -124,41 +176,3 @@
 
 
 
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(global-font-lock-mode t nil (font-lock))
- '(indicate-empty-lines t)
- '(inhibit-startup-screen t)
- '(inverse-video nil)
- '(line-number-display-limit nil)
- '(menu-bar-mode nil)
- '(show-paren-mode t nil (paren))
- '(tool-bar-mode nil)
- '(truncate-lines t)
- '(truncate-partial-width-windows t)
- '(use-file-dialog nil)
- '(visible-bell t)
- '(x-select-enable-clipboard t)
- '(x-stretch-cursor nil))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "grey10" :foreground "grey85" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(flymake-errline ((((class color)) (:underline "dark red" :slant italic))))
- '(flymake-warnline ((((class color)) (:underline "grey52"))))
- '(flyspell-duplicate ((t (:underline t :slant italic))))
- '(flyspell-incorrect ((t (:underline t :weight bold))))
- '(font-lock-comment-face ((t (:foreground "indianred"))))
- '(font-lock-keyword-face ((t (:foreground "turquoise3"))))
- '(font-lock-string-face ((t (:foreground "palegreen4"))))
- '(outline-2 ((t (:foreground "steelblue1"))))
- '(rst-level-1-face ((t (:background "darkred"))) t)
- '(rst-level-2-face ((t (:foreground "indianred"))) t)
- '(rst-level-3-face ((t (:background "grey30" :foreground "lightblue"))) t)
- '(rst-level-4-face ((t (:background "grey20"))) t))

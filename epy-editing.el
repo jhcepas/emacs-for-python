@@ -6,13 +6,13 @@
 ;; (ido-mode t)
 ;; (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
-(require 'smart-operator)
+(idle-require 'smart-operator)
 
 ;; Open Next Line
-(require 'open-next-line)
+(idle-require 'open-next-line)
 
 ;; Auto Completion
-(require 'auto-complete-config)
+(idle-require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories 
 	     (concat epy-install-dir "auto-complete/ac-dict"))
 (ac-config-default)
@@ -154,8 +154,8 @@ original" (interactive)
 (show-paren-mode t)
 
 ;; Highlight indentation
-(require 'highlight-indentation)
-(add-hook 'python-mode-hook 'highlight-indentation)
+;(idle-require 'highlight-indentation)
+;(add-hook 'python-mode-hook 'highlight-indentation)
 
 ;; Line numbering
 ;;(setq linum-format "%4d")

@@ -10,67 +10,18 @@
       nil
     t))
 
-(if (font-exists-p "inconsolata-g")
-    (set-default-font "inconsolata-g")
-  )
+;(if (font-exists-p "inconsolata-g")
+;    (set-default-font "inconsolata-g")
+;  )
 
 ;; avoid Emacs hanging for a while changing default font
 (modify-frame-parameters nil '((wait-for-wm . nil)))
-
-
-;; custom-set-variables was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
-(custom-set-variables
- '(column-number-mode t)
- '(global-font-lock-mode t nil (font-lock))
- '(indicate-empty-lines t)
- '(inhibit-startup-screen t)
- '(inverse-video nil)
- '(line-number-display-limit nil)
- '(menu-bar-mode nil)
- '(show-paren-mode t nil (paren))
- '(tool-bar-mode nil)
- '(truncate-lines t)
- '(truncate-partial-width-windows t)
- '(use-file-dialog nil)
- '(visible-bell t)
- '(x-select-enable-clipboard t)
- '(x-stretch-cursor nil))
 
 ;; show column number
 (column-number-mode t)
 
 ;; show paren, brace, and curly brace "partners" at all times
 (show-paren-mode t)
-
-(custom-set-faces
- '(default ((t (:stipple nil :background "grey10" :foreground "grey85" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(flyspell-duplicate ((t (:underline t :slant italic))))
- '(flyspell-incorrect ((t (:underline t :weight bold))))
-
- '(flymake-errline ((((class color)) (:underline "dark red" :slant italic))))
- '(flymake-warnline ((((class color)) (:underline "grey52"))))
-
- '(font-lock-comment-face ((t (:foreground "indianred"))))
- '(font-lock-keyword-face ((t (:foreground "turquoise3"))))
- '(font-lock-string-face ((t (:foreground "palegreen4"))))
- '(outline-2 ((t (:foreground "steelblue1"))))
- '(rst-level-1-face ((t (:background "darkred"))) t)
- '(rst-level-2-face ((t (:background "grey78"))) t)
- '(rst-level-3-face ((t (:background "darkgreen"))) t)
- '(rst-level-4-face ((t (:background "grey20"))) t))
-
-;; If possible set up a custom color scheme, otherwise turn colors off
-(autoload 'custom-set-faces "font-lock" "Set the color scheme" t)
-(autoload 'font-lock-fontify-buffer "font-lock" "Fontify Buffer" t)
-(condition-case err
-    (progn (apply 'custom-set-faces lconfig-font-lock-faces)
-           )
-  (error (progn
-           (message "Could not customize colors, disabling colored fonts.")
-           (setq-default font-lock-auto-fontify t))))
 
 ;; Using cursor color to indicate some modes. If you sometimes find
 ;; yourself inadvertently overwriting some text because you are in

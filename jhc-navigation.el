@@ -12,7 +12,7 @@
        (if (display-graphic-p)
            (progn
              (cua-mode t))
-         (pc-selection-mode)
+         ;;(pc-selection-mode)
          )
        ))
 ;; If emacs 21, use pc-selection mode
